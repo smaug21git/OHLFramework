@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,12 +34,15 @@ public class logoutOfApplication {
 		op.setAutoGrantPermissions(true);
 		op.setNoReset(true);
 		URL u = new URL("http://localhost:4723");
-		AndroidDriver driver = new AndroidDriver(u, op);
+		WebDriver driver1 = new AndroidDriver(u, op);
+		AndroidDriver driver=(AndroidDriver) driver1;
+		
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(30));
 		driver.activateApp("in.orangehealth.patient");
 		HomePage hp= new HomePage(driver);
+		
 		
 		//profilebutton
 		WebElement profilebtn = hp.getProfileBtn();

@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="myProfile.MargeProfile">
+      <class name="checkUps.AddACheckupTest">
         <methods>
-          <include name="margeProfile"/>
+          <include name="addCheakup"/>
         </methods>
-      </class> <!-- myProfile.MargeProfile -->
+      </class> <!-- checkUps.AddACheckupTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
