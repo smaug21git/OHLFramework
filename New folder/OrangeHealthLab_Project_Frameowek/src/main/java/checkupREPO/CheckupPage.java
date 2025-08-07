@@ -18,25 +18,59 @@ public class CheckupPage {
 	}
 	
 	
+	
+	// checkup module icon
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Checkups\"]")
 	private WebElement checkups;
-	
-	
 	
 	public WebElement getCheckups() {
 		return checkups;
 	}
-
-
-	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.ImageView")
-	private WebElement searchForchekupTxtfield;
 	
+	
+	
+	
+	
+	// popular chechups
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Full Body Checkup\"]/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView")
+	private WebElement fullbodyCheckupBox;
+	
+	public WebElement getFullbodyCheckupBox() {
+		return fullbodyCheckupBox;
+	}
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Sexual Health\"]")
+	private WebElement sexualhealthCheckupBox;
+	
+	public WebElement getsexualhealthCheckupBox() {
+		return sexualhealthCheckupBox;
+	}
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Women's Health\"]")
+	private WebElement womenhealthCheckupBox;
+	
+	public WebElement getwomenhealthCheckupBox() {
+		return womenhealthCheckupBox;
+	}
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Allergy Checkup\"]")
+	private WebElement AllergyCheckupBox;
+	
+	public WebElement getAllergyCheckupBox() {
+		return AllergyCheckupBox;
+	}
+	
+	
+	
+	// curated checkups
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Diabetes\r\n"
 			+ "Checkup\"]")
 	private WebElement diabetes;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Senior\r\n"
-			+ "Citizen\"]")
+	
+	
+	@AndroidFindBy(xpath = "android.view.ViewGroup[@content-desc=\"Senior Citizen\"]")
 	private WebElement SrCitizen;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Women's\r\n"
@@ -54,13 +88,11 @@ public class CheckupPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Cancer\r\n"
 			+ "Checkup\"]")
 	private WebElement cancerCheckup;
+	
+	
 
 	public AppiumDriver getDriver() {
 		return driver;
-	}
-
-	public WebElement getSearchForchekupTxtfield() {
-		return searchForchekupTxtfield;
 	}
 
 	public WebElement getDiabetes() {

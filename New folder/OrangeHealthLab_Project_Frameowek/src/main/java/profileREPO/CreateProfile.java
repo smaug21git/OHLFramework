@@ -3,12 +3,29 @@ package profileREPO;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import javaUtil.JavaUtility;
+import utility.GestureUtility;
 
 public class CreateProfile {
 	
+	public WebElement getMale() {
+		return male;
+	}
+
+
+	public WebElement getFemale() {
+		return female;
+	}
+
+
+	public WebElement getBloodTypeGeneric() {
+		return bloodTypeGeneric;
+	}
+
 	AppiumDriver driver;
 	public CreateProfile( AppiumDriver driver) {
 		this.driver= driver;
@@ -22,20 +39,53 @@ public class CreateProfile {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"John\"]")
 	private WebElement fullName;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\" 29 Jul 2025 (0)\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\" DD / MMM / YYYY \"]")
 	private WebElement dateOfBirthday;
+	
+
+	
+	
 	
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Gender*\"]")
 	private WebElement gender;
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Male\"]")
+	private WebElement male;
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Female\"]")
+	private WebElement female;
+	
+	
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Not Set\"]")
 	private WebElement bloodType;
 	
+	
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"A+\"]")
+	private WebElement bloodTypeGeneric;
+	// business method for blood type info
+	
+		public WebElement bloodtypegeneric(String type) {
+			
+			return driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\""+type+"\"]"));
+		}
+	
+	
+	
+	
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"000-000-0000\"]")
 	private WebElement contactNumber;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Select\"]")
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Relationship, Select\"]/android.widget.ImageView")
 	private WebElement reletionship;
+	
+	// business method for reletionship type info
+	
+			public WebElement reletionType(String Type) {
+				
+				return driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\""+Type+"\"]"));
+			}
+		
+	
+	
 
 	
 	//physicalinfo
@@ -44,23 +94,41 @@ public class CreateProfile {
 	private WebElement physicalInfo;
 	@AndroidFindBy(xpath = "(//android.widget.EditText[@text=\"00\"])[1]")
 	private WebElement heightFT;
-	@AndroidFindBy(xpath = "(//android.widget.EditText[@text=\"00\"])[2]")
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text=\"00\"]")
 	private WebElement heightIN;
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Not Set\"])[1]")
 	private WebElement weight;
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Not Set\"])[2]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Waist Size\"]/following-sibling::android.view.ViewGroup[@content-desc='Not Set']")
 	private WebElement waistSize;
 	
 	//lifestyleinfo
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Lifestyle Info\"]")
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Lifestyle Info\"]")
 	private WebElement lifeStyleInfo;
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Select\"])[1]")
 	private WebElement smoking;
+	
+	public WebElement smoking(String type) {
+		
+		return driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\""+type+"\"]"));
+	}
+	
+	
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Select\"])[2]")
 	private WebElement drinking;
+	
+     public WebElement drinking(String type) {
+		
+		return driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\""+type+"\"]"));
+	}
+     
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Select\"])[3]")
 	private WebElement workOut;
+	
+public WebElement workout(String type) {
+		
+		return driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\""+type+"\"]"));
+	}
 	
 	//medical condition
 	
@@ -77,7 +145,7 @@ public class CreateProfile {
 	private WebElement FamilyHistoryAddCondition;
 	
 	
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"Create Profile\"])[2]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Create Profile\"]")
 	private WebElement createProfile;
 	public AppiumDriver getDriver() {
 		return driver;

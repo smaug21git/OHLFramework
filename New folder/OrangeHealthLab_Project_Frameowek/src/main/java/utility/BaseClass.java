@@ -6,18 +6,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
-import io.appium.java_client.AppiumBy;
+import com.beust.jcommander.Parameter;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import listner.UtilityClassObject;
 import objectRepo.Addfamilymemberpage;
 import objectRepo.HomePage;
 import objectRepo.ProfilePage;
@@ -38,6 +40,7 @@ public class BaseClass {
 	public  GestureUtility gUtil;
 	public TestsPage tp;
 	public Addfamilymemberpage aFMp;
+	public WebDriverWait wait;
 	
 	public static AndroidDriver sdriver;
 
@@ -51,14 +54,16 @@ public class BaseClass {
 		service.start();
 
 	}
-
+	
+	@Parameters({"deviceName","deviceUdid"})
+	
 	@BeforeClass
-	public  void launchApp() throws FileNotFoundException, IOException, InterruptedException {
+	public  void launchApp(String deviceName, String deviceUdid ) throws FileNotFoundException, IOException, InterruptedException {
 
 		UiAutomator2Options op = new UiAutomator2Options();
 		op.setPlatformName("android");
-		op.setDeviceName("Galaxy A04");
-		op.setUdid("R9ZW1065M9V");
+		op.setDeviceName(deviceName);
+		op.setUdid(deviceUdid);
 		op.setIgnoreHiddenApiPolicyError(true);
 		op.setAutoGrantPermissions(true);
 		op.setNoReset(true);
@@ -67,49 +72,51 @@ public class BaseClass {
 		URL u = new URL("http://localhost:4723");
 		driver = new AndroidDriver(u, op);
 		sdriver=driver;
+//		UtilityClassObject.setDriver(driver);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		 wait= new WebDriverWait(driver, Duration.ofSeconds(30));
 	
 		driver.activateApp("in.orangehealth.patient");
 
 	}
-
-	@BeforeMethod
-	public  void login() throws FileNotFoundException, IOException {
-		
-		
-		System.out.println("=====before mothod executed=====");
-//		wp = new WelcomePage(driver);
-//		wp.getLoginOrSignupBtn().click();
-
-//		sp = new SignUpPage(driver);
-//		sp.getMobileNoTxtFieldBtn().sendKeys("7001244860");
-//		sp.getContinueBtn().click();
-
-	}
-
-	@AfterMethod
-	public  void logout() {
-		
-
-//		hp = new HomePage(driver);
-//		hp.getProfileBtn().click();
+//
+//	@BeforeMethod
+//	public  void login() throws FileNotFoundException, IOException {
 //		
-//		mAc = new MyAccountPage(driver);
-//		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Logout\"));")).click();
-//		mAc.getLogoutBtn().click();
 //		
-//		 gUtil= new GestureUtility(driver);
-//		 gUtil.clickByCoordinate(485, 818);
-		System.out.println("=====after mothod executed=====");
-		
+//		System.out.println("=====before mothod executed=====");
+////		wp = new WelcomePage(driver);
+////		wp.getLoginOrSignupBtn().click();
+//
+////		sp = new SignUpPage(driver);
+////		sp.getMobileNoTxtFieldBtn().sendKeys("7001244860");
+////		sp.getContinueBtn().click();
+//
+//	}
 
-	}
+//	@AfterMethod
+//	public  void logout() {
+//		
+//
+////		hp = new HomePage(driver);
+////		hp.getProfileBtn().click();
+////		
+////		mAc = new MyAccountPage(driver);
+////		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Logout\"));")).click();
+////		mAc.getLogoutBtn().click();
+////		
+////		 gUtil= new GestureUtility(driver);
+////		 gUtil.clickByCoordinate(485, 818);
+//		System.out.println("=====after mothod executed=====");
+//		
+//
+//	}
 
 	@AfterClass
 	public  void closeApp() throws FileNotFoundException, IOException {
 
 		System.out.println("=====after class executed=====");
-		// driver.terminateApp("in.orangehealth.patient");
+		 driver.terminateApp("in.orangehealth.patient");
 
 	}
 

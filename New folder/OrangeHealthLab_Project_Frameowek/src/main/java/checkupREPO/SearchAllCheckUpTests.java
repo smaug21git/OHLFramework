@@ -16,17 +16,17 @@ public class SearchAllCheckUpTests {
 	}
 	
 	// personal info
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Added\"]")
-	private WebElement fullbodyAdded;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Full Body Checkup - Essential\"]/following-sibling::android.view.ViewGroup/descendant::android.widget.TextView[@text='+ Add']")
+	private WebElement fullbodyAddedEssential;
 	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Compare\"]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Full Body Checkup - Comprehensive\"]/following-sibling::android.view.ViewGroup/descendant::android.widget.TextView[@text='Compare']")
 	private WebElement fullbodycompare;
 	public AppiumDriver getDriver() {
 		return driver;
 	}
 
-	public WebElement getFullbodyAdded() {
-		return fullbodyAdded;
+	public WebElement getfullbodyAddedEssential() {
+		return fullbodyAddedEssential;
 	}
 
 	public WebElement getFullbodycompare() {

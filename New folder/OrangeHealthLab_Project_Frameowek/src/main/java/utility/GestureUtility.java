@@ -8,12 +8,13 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 
 public class GestureUtility {
-	AndroidDriver driver;
+	AppiumDriver driver;
 	
-		public GestureUtility(AndroidDriver driver) {
+		public GestureUtility(AppiumDriver driver) {
 			this.driver=driver;
 		}
 		
@@ -91,7 +92,7 @@ public class GestureUtility {
 
 		public WebElement ScrollByText(String text) {
 			WebElement elementXpath = driver.findElement(AppiumBy
-					.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + text + "\"));"));
+					.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(text(\"" + text + "\"));"));
 			return elementXpath;
 		}
 

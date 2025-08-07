@@ -2,7 +2,13 @@ package utility;
 
 import java.time.Duration;
 import java.util.Set;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.ScreenOrientation;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 
@@ -57,10 +63,23 @@ public class AndroidUtility {
 		driver.setClipboardText(text);
 	}
 	
-	public void toast() {
+	public void toast1() {
 		String msg = driver.findElement(AppiumBy.xpath("//android.widget.Toast[1]")).getText();
 		System.out.println(msg);
 	}
+	//android.widget.TextView[contains(@text,'- - - - - - - ')]
+	
+	public void toast() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement toast = wait.until(ExpectedConditions.presenceOfElementLocated(
+                    AppiumBy.xpath("//android.widget.TextView[contains(@text,'- - - - - - - ')]")));
+            System.out.println("Toast Message: " + toast.getText());
+        } catch (Exception e) {
+            System.out.println("Toast message not found: " + e.getMessage());
+        }
+    }
+	
 	
 	public void getContexts() {
 		Set<String> context = driver.getContextHandles();

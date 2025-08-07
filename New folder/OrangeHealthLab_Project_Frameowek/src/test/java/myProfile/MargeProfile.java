@@ -44,7 +44,7 @@ public class MargeProfile {
 		wait.until(ExpectedConditions.visibilityOf(profilebtn));
 		profilebtn.click();
 		
-		/* List<WebElement> allProfile = driver.findElements(AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup"));
+		List<WebElement> allProfile = driver.findElements(AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup"));
 		
 		System.out.println(allProfile.size());
 
@@ -54,37 +54,37 @@ public class MargeProfile {
 		}
 		
 		driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"delete-account-heading\"]")).click();
-		driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"delete-your-account-1\"]")).click(); */
+		driver.findElement(AppiumBy.xpath("//android.view.ViewGroup[@content-desc=\"delete-your-account-1\"]")).click(); 
 		
 
-//		ProfilePage p = new ProfilePage(driver);
-//		// p.getKebabBtn().click();
-//		Thread.sleep(3000);
-//		GestureUtility gutil = new GestureUtility(driver);
-//		gutil.clickByCoordinate(666, 534);
-//		Thread.sleep(3000);
+		ProfilePage p = new ProfilePage(driver);
+		// p.getKebabBtn().click();
+		Thread.sleep(3000);
+		GestureUtility gutil = new GestureUtility(driver);
+		gutil.clickByCoordinate(666, 534);
+		Thread.sleep(3000);
 		
 		
-//		// p.getMargeProfile().click();
-//		gutil.clickByCoordinate(507, 647);
-//
-//		// String name="Sanji";
-//		Thread.sleep(3000);
-//
-//		driver.findElement(AppiumBy.xpath("(//android.widget.TextView[@text=\"Sanji\"])[1]")).click();
-//
-//		Thread.sleep(2000);
-//		// driver.findElement(AppiumBy.xpath("(//android.widget.TextView[@text=\"Sanji\"])[2]")).click();
-//		gutil.clickByCoordinate(275, 1136);
-//		Thread.sleep(3000);
-//		//marge profile
-//		gutil.clickByCoordinate(458, 1441);
-////		// profile 1
-//		Thread.sleep(3000);
-//		gutil.clickByCoordinate(299, 855);
-//		Thread.sleep(3000);
-////		// confirm
-//		gutil.clickByCoordinate(476, 1002);
+		// p.getMargeProfile().click();
+		gutil.clickByCoordinate(507, 647);
+
+		// String name="Sanji";
+		Thread.sleep(3000);
+
+		driver.findElement(AppiumBy.xpath("(//android.widget.TextView[@text=\"Sanji\"])[1]")).click();
+
+		Thread.sleep(2000);
+		// driver.findElement(AppiumBy.xpath("(//android.widget.TextView[@text=\"Sanji\"])[2]")).click();
+		gutil.clickByCoordinate(275, 1136);
+		Thread.sleep(3000);
+		//marge profile
+		gutil.clickByCoordinate(458, 1441);
+		// profile 1
+		Thread.sleep(3000);
+		gutil.clickByCoordinate(299, 855);
+		Thread.sleep(3000);
+		// confirm
+		gutil.clickByCoordinate(476, 1002);
 
 	}
 

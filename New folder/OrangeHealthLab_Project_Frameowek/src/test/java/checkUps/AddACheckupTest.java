@@ -3,16 +3,24 @@ package checkUps;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import checkupREPO.CheckupPage;
 import checkupREPO.FullBodyCheckup;
+import checkupREPO.FullBodyCheckupBoxPlans;
+import checkupREPO.SearchAllCheckUpTests;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.pagefactory.AndroidBy;
+import utility.AndroidUtility;
 
 public class AddACheckupTest {
 	
@@ -23,6 +31,7 @@ public class AddACheckupTest {
 		
 		UiAutomator2Options op = new UiAutomator2Options();
 		op.setPlatformName("android");
+		op.setAutomationName("UiAutomator2");
 		op.setDeviceName("Galaxy A04");
 		op.setUdid("R9ZW1065M9V");
 		op.setIgnoreHiddenApiPolicyError(true);
@@ -35,22 +44,34 @@ public class AddACheckupTest {
 		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(30));
 		driver.activateApp("in.orangehealth.patient");
 		
-		Thread.sleep(10000);
+		// click checkup module
 		CheckupPage cp= new CheckupPage(driver);
-		
+		wait.until(ExpectedConditions.visibilityOf(cp.getCheckups()));
 		cp.getCheckups().click();
-		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"Full Body Checkup\"));")).click();
+		Thread.sleep(5000);
+		// chechup box 
+		cp.getFullbodyCheckupBox().click();
 		
-		cp.getFullBodyChekup().click();
-		Thread.sleep(4000);
-		try {
-		FullBodyCheckup fbc= new FullBodyCheckup(driver);
-		fbc.getEssentialFullBodyCheckup().click();
-		} catch(Exception e) {
-			Thread.sleep(2000);
-			
-			driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"Full Body Checkup - Essential\"));")).click();
-		}
+		Thread.sleep(5000);
+		
+		//
+		FullBodyCheckupBoxPlans fbcp= new FullBodyCheckupBoxPlans(driver);
+		fbcp.getAddToCart_Essential().click();
+		
+		
+		//verify toast message
+		AndroidUtility autil= new AndroidUtility(driver);
+		autil.toast();
+		
+		//verify button text change after clicking
+		
+		
+		
+		
+		
+		
+		
+	
 	}
 
 }
