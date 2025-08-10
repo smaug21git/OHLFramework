@@ -94,7 +94,16 @@ public class GestureUtility {
 			WebElement elementXpath = driver.findElement(AppiumBy
 					.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(text(\"" + text + "\"));"));
 			return elementXpath;
+			
 		}
+		
+		public WebElement ScrollByTextBackward(String text) {
+			WebElement elementXpath = driver.findElement(AppiumBy
+					.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollBackward(text(\"" + text + "\"));"));
+			return elementXpath;
+			
+		}
+		
 
 
 		public WebElement ScrollByXpath(String xpath) {

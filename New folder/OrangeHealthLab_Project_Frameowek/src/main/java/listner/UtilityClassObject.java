@@ -32,7 +32,7 @@ public class UtilityClassObject {
 	}
 
 	// getter driver
-	public static WebDriver getDriver() {
+	public static AndroidDriver getDriver() {
 		return driver.get();
 	}
 

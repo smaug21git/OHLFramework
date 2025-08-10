@@ -3,15 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="cHECKUP.AddACheckupTest">
+      <class name="myProfile.AddFamilyMemderWithPersonalInfo">
         <methods>
-          <include name="addCheakup"/>
-          <include name="closeApp"/>
-          <include name="launchApp"/>
-          <include name="stopServer"/>
-          <include name="startServer"/>
+          <include name="createProfileWithPersonalInfo"/>
         </methods>
-      </class> <!-- cHECKUP.AddACheckupTest -->
+      </class> <!-- myProfile.AddFamilyMemderWithPersonalInfo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
