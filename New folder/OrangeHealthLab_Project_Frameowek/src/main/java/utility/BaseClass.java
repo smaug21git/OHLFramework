@@ -11,6 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.beust.jcommander.Parameter;
@@ -58,7 +59,7 @@ public class BaseClass {
 	@Parameters({"deviceName","deviceUdid"})
 	
 	@BeforeClass
-	public  void launchApp(String deviceName, String deviceUdid ) throws FileNotFoundException, IOException, InterruptedException {
+	public  void launchApp(@Optional("galaxy A04") String deviceName, @Optional("R9ZW1065M9V")String deviceUdid ) throws FileNotFoundException, IOException, InterruptedException {
 
 		UiAutomator2Options op = new UiAutomator2Options();
 		op.setPlatformName("android");
